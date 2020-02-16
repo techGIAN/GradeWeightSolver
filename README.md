@@ -1,8 +1,3 @@
-<style>
-img[alt=half] {
-  width: 50%;
-}
-</style>
 # GradeWeightSolver
 A short tutorial of performing Linear Regression in R by determining the weights of grade requirements of students towards the overall grade
 
@@ -31,3 +26,4 @@ For the predictors, there are 9 labs, 2 tests, 1 midterm, 3 quizzes and 1 final 
 <p align="center">
   <img src="img/start.png" width=50% margin-left=auto margin-right=auto />
 </p>
+First download the dataset in this repository. Then launch R (click <a href="https://www.r-project.org/" target="_blank">here</a> if you have not installed R/RStudio yet or if you need technical help with R/RStudio) and start a new project. Once the R window opens, you would see a small square window on the upper right corner of the screen. Click on the "Import Dataset" button, then click on "From Excel" option since we know that the dataset comes from an Excel sheet. Navigate on to the downloaded `grades.xlsx` file. Make sure that we keep the headings on. Then keep all defaults and then import.
