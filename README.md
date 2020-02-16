@@ -19,7 +19,7 @@ For the predictors, there are 9 labs, 2 tests, 1 midterm, 3 quizzes and 1 final 
   <li>Let us also decided on whether or not to remove the students who have missing exam grade or have several incomplete grades</li>
   <li>It is also unknown as to whether the final grades are as is or if they are curved (either bumped up or down). In certain universities, if a professor senses that the midterm grades turn out to be low, they tend to make the exam easier so that students can pull their averages up - and this can mess up our analyses. It may also be possible that midterms tend to be high and hence the professor makes exams harder to pull class averages down. Also, if by the end of the term and the professor finds out that his/her class has a low class average when it comes to final grades, they tend to curve. In that case, averages shift, and so do the student's grades. We do not know whether the response variable here is already adjusted or the original average.</li>
 </ul>
-<b>Where to Find the Dataset: </b> It is in this GitHub Repo, please download `grades.xlsx`
+<b>Where to Find the Dataset: </b> It is in this GitHub Repo, please download `Pandas`
 
 ## Tutorial in Linear Regression
 ### Getting started
