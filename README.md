@@ -72,3 +72,18 @@ are common when working with data, that in fact many data scientists and statist
 ```
 It's a good thing that the dataset that the professor has provided is free from noise (if not perfect, then almost perfect). Since we have some students who dropped the course in the middle of the term or who have not written the exam, then that means they receive a 0 grade for their exam, and because this skews our data - let us take them out. As a side warning though, if there is a significant number of instances of such case, it is not recommended to drop them since you are losing data; you are losing information and this is a trade-off between low good quality data vs high bad quality data. We try to get the balance of having good quality data and at the same time keeping them as much as we could. The more the merrier. But if we look at our dataset, notice that if we perfom the first line, which basically creating another dataset `df` and store there all observations from `grades` whose `final_exam` is not 0. We again use `dim()` function to determine how many instances are there in `df`, which is supposed to hold the students who did not write the exam. Because we have 602 now, and we initially have 636, then only 34 students did not write the exam and we can take it out because that is merely a 5% of the entire student population in the class (i.e. we only consider 95% of the student population which is still good). Another thing to note that just because a student gets a 0 in the exam does not mean that he/she dropped the course or did not write it. It could be that he/she actually wrote the exam and did not really receive a score (i.e. no correct answer). But we shall not worry about this for now; I re-assured that all students that we have in `df` have written the exam.
 
+### More Exploring on the Data
+Some professors are keen at curving final grades especially when it does not meet the satisfactory C+, which is usually around 60-65%. Too low doesn't look good in them, nor does too high. So this average is important (that's why you hear the bell curve a lot!). We would like to know if the final grades here are "curved". Apparently if it is, then we would be expecting some errors in our prediction model. Think about it, if there is no curve and that students receive the grade according to the original requirements/weighting, then they could either score too low or too high than the average range. And there would be no error then because the model would be able to pinpoint exactly what the weightings are for each course requirement. 
+
+``` r
+> pass <- df$final_grade >= .5
+> length(pass[pass == TRUE])
+[1] 499
+> mean(df$final_grade)
+[1] 0.657233
+> median(df$final_grade)
+[1] 0.6783065
+```
+The first two lines here determines how many students have passed the course. Great, 499, which is around 80% of the course. And around 20% have failed. Note that a pass at our university means a final grade of 50% or above. Looking at the mean and median, we get around 65% and 67% which is somehow close to the average range mentioned earlier, little higher but still looks fine. Two interpretations: either this is the original actual average, OR this is the curved grade (could be up or down). But we will see in our analysis that if there is no error, then it's the former case. Else, it's the latter. No error in this context means a "a very significantly little to no" error. <br><br>
+
+Now, let us turn our attention into the current 2D plot of one of the predictors vs the response.
