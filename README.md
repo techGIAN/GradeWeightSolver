@@ -23,4 +23,4 @@ For the predictors, there are 9 labs, 2 tests, 1 midterm, 3 quizzes and 1 final 
 
 ## Tutorial in Linear Regression
 ### Getting started
-![start][https://github.com/techGIAN/GradeWeightSolver/blob/master/img/start.png]
+![start]["https://github.com/techGIAN/GradeWeightSolver/blob/master/img/start.png"]
