@@ -1,3 +1,8 @@
+<style>
+img[alt=half] {
+  width: 50%;
+}
+</style>
 # GradeWeightSolver
 A short tutorial of performing Linear Regression in R by determining the weights of grade requirements of students towards the overall grade
 
@@ -23,4 +28,6 @@ For the predictors, there are 9 labs, 2 tests, 1 midterm, 3 quizzes and 1 final 
 
 ## Tutorial in Linear Regression
 ### Getting started
-![start](img/start.png | width=50%)
+<p align="center">
+  <img src="img/start.png" width=50% margin-left=auto margin-right=auto />
+</p>
