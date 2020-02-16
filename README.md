@@ -64,7 +64,8 @@ After getting to know your data, it is critical that data be pre-processed befor
   <li>Data mis-types</li>
 </ul>
 are common when working with data, that in fact many data scientists and statisticians spend almost up to 80% of the time on the project just simply to do any data pre-processing tasks (not necessarily 80% but most often than not, longer time than to actually perform their main analysis and tasks). There could be various reasons for why such mishaps happens, such as human error in data input, region discrepancies, data rendering issues, etc. One may solve these issues through data pre-processing techniques such as doing some data correction (eg. filling in missing data with 0s, deleting observations that have missing or incorrect information, taking out outliers, etc.). In detail, I would like to write a separate through in-depth article about data pre-processing and its techniques. But that's for a future blog. At least you know the basic picture.
-```r
+
+``` r
 > df <- grades[!(grades$final_exam==0),]
 > dim(df)
 [1] 602  18
