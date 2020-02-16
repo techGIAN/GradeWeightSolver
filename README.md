@@ -21,14 +21,14 @@ For the predictors, there are 9 labs, 2 tests, 1 midterm, 3 quizzes and 1 final 
   <li>Let us also decided on whether or not to remove the students who have missing exam grade or have several incomplete grades</li>
   <li>It is also unknown as to whether the final grades are as is or if they are curved (either bumped up or down). In certain universities, if a professor senses that the midterm grades turn out to be low, they tend to make the exam easier so that students can pull their averages up - and this can mess up our analyses. It may also be possible that midterms tend to be high and hence the professor makes exams harder to pull class averages down. Also, if by the end of the term and the professor finds out that his/her class has a low class average when it comes to final grades, they tend to curve. In that case, averages shift, and so do the student's grades. We do not know whether the response variable here is already adjusted or the original average.</li>
 </ul>
-<b>Where to Find the Dataset: </b> It is in this GitHub Repo, please download `grades.xlsx`
+<b>Where to Find the Dataset: </b> It is in this GitHub Repo, please download <b>grades.xlsx</b>
 
 ## Tutorial in Linear Regression
 ### Getting started
 <p align="center">
   <img src="img/start.png" width=50% margin-left=auto margin-right=auto />
 </p>
-First download the dataset in this repository. Then launch R (click <a href="https://www.r-project.org/" target="_blank">here</a> if you have not installed R/RStudio yet or if you need technical help with R/RStudio) and start a new project. Once the R window opens, you would see a small square window on the upper right corner of the screen. Click on the "Import Dataset" button, then click on "From Excel" option since we know that the dataset comes from an Excel sheet. Navigate on to the downloaded `grades.xlsx` file. Make sure that we keep the headings on. Then keep all defaults and then import. Alternatively, you can type in this R code in the console to import the dataset:
+First download the dataset in this repository. Then launch R (click <a href="https://www.r-project.org/" target="_blank">here</a> if you have not installed R/RStudio yet or if you need technical help with R/RStudio) and start a new project. Once the R window opens, you would see a small square window on the upper right corner of the screen. Click on the "Import Dataset" button, then click on "From Excel" option since we know that the dataset comes from an Excel sheet. Navigate on to the downloaded <b>grades.xlsx</b> file. Make sure that we keep the headings on. Then keep all defaults and then import. Alternatively, you can type in this R code in the console to import the dataset:
 
 ```
 > library(readxl)
@@ -36,9 +36,14 @@ First download the dataset in this repository. Then launch R (click <a href="htt
 > View(grades)
 ```
 
+<b><underline>WARNING</underline>!</b> <i>If you opt to use this code, ensure that the parameter inside the</i> `read_excel()` <i> contains the correct path to where you saved your downloaded dataset file. Update the above code if necessary!</i><br><br>
+
 Notice that the first line allows us to import Excel files, the second line allows us to read our Excel file and import the dataset into a variable called `grades`. The third line simply allows us to view the dataset.
 
 Examine the dataset if you will. Use the the third line of the R code above to view the dataset upon import. Alternatively, ensure that the "Environment" tab is enabled in the small window on the upper right hand corner and you will see a list of available variables in the current environment. Click (or double click "grades") to view the dataset. Compare if we have the same; below shows the first 10 observations that you would find in the dataset:
 <p align="center">
   <img src="img/ds.png" width=75% margin-left=auto margin-right=auto />
 </p>
+
+### Playing Around With the Data (A Bit)
+It is important to get to know your data, what you're dealing. Although I have given some preliminary information on what kind of dataset we will be working on and what attributes it has, it is also good to know what other things we can deduce from the dataset. But then for this simple demo, it is enough to know a couple of stuff, perhaps probably only the most pertinent ones. We would not want to waste too much time, it is important to get some exploratory analysis, but just a bit is fine for this case - since we are only looking into building a simple linear regression model.
