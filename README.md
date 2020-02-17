@@ -213,3 +213,6 @@ On other note, check out some of my other links:
   <li>Living the G Life: I Now Have A Personal Blog, new updates every 2 weeks or so - http://galix.me/pb/pb.html</li>
   <li>My CV by the way (just flexin'): http://galix.me/CV_Updated_January2020.pdf</li>
 </ul>
+
+### Disclaimer
+As a short disclaimer, it may be possible that I have made some mistakes as well. So I shall not be liable for anything and <b>you may use this <i>for reference only</i> and at your own risk!</b> Contact me through email at gian.alix@gmail.com for any corrections found.
