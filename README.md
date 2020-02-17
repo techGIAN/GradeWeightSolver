@@ -147,6 +147,23 @@ In supervised learning, such as in regression, it is important to split the data
 
 ```r
 > set.seed(1)
-> rnd_sample <- sample(1:dim(df)[1],dim(df)[1]/10)
+> rnd_sample <- sample(1:dim(df)[1],dim(df)[1]*9/10)
+> model_matrix <- model.matrix(final_grade~., data=df)[,-1]
 ```
-We can input any value for the seed. This just means that if we perform the same analysis again using the same seed, we will get the sample back. Using another value for the seed gives a different set of random sample. The second line 
+We can input any value for the seed. This just means that if we perform the same analysis again using the same seed, we will get the sample back. Using another value for the seed gives a different set of random sample. The second line just means that out of the total number of students, we take a 90% random sample. In the third line, we create a model matrix using `final_grade` as the response and the rest of the other variables as the predictors.
+
+```r
+> x_train <- model_matrix[rnd_sample,]
+> x_test <- model_matrix[-rnd_sample,]
+> y_train <- df$final_grade[rnd_sample]
+> y_test <- df$final_grade[-rnd_sample]
+```
+We then create our training and testing sets. The variable names should be self-explanatory of what they do. It also provides the syntax for getting the training/testing data from the datasets. That should be easy enough to work out without further detailed explanation.
+
+### The Linear Model
+The finally, the moment of truth that we can make our linear model! We simply type this R code in:
+
+```r
+> lin_model <- lm(final_grade~., data=df)
+> summary(lin_model)
+```
