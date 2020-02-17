@@ -167,3 +167,49 @@ The finally, the moment of truth that we can make our linear model! We simply ty
 > lin_model <- lm(final_grade~., data=df)
 > summary(lin_model)
 ```
+Notice that `lm()` is the function used in R to create a linear model. And then the `summary()` outputs a summary of what the model is. You should have something like this:
+
+<p align="center">
+  <img src="img/lin_model_summary.png" width=50% margin-left=auto margin-right=auto />
+</p>
+
+The second column of the table in the above shows the different coefficients/weights of each grade component. Notice that each test seems to be weighted almost evenly, so do the labs and the quizzes. It may also be possible some grade component to weigh more depending on the professor's (example: test 2 has a heavier weight than test 1 because it is comprehensive). But in our case, everything seems to be fairly consistent. If you think about it, it's possible that there are errors after all (see our remarks in the above). And all those errors are carried over to the intercepts. But how do we actually calculate errors in models?
+
+### The Accuracy of the Model
+The error rate is one way of measuring a model's accuracy. In linear regression, we use the statistic SSE (as mentioned in the above) in order to determine the error of the model. Let us try it in R.
+
+```r
+> pred_test <- predict(lin_model, newdata=data.frame(x_test), type="response")
+> compare_frame <- data.frame(y_test,pred_test)
+> compare_frame$sqe <- sqe(compare_frame$y_test, compare_frame$pred_test)
+> sse <- sum(compare_frame$sqe)
+> sse
+[1] 0.01772238
+```
+The `predict()` function in R is used to predict a particular value of an observation given its predictors and the model used. We then create another data frame and we would see side by side the predicted and actual values of each observation. We then use the `sqe()` function that we defined earlier to find the SSE. And see that our SSE happens to be 0.01772238, which we see is good because of the low error.
+
+### Grade Prediction
+Let's use our model to predict a student's grade in the class given his/her grades. Note that the student is imaginary and isn't really part of the class.
+
+```r
+> lin_model$coefficients
+ (Intercept)        lab_1        lab_2        lab_3        lab_4        lab_5        lab_6        lab_7        lab_8        lab_9 
+0.0416333113 0.0076334686 0.0214687450 0.0186076030 0.0203180532 0.0172562780 0.0184116061 0.0124774185 0.0194041968 0.0079677938 
+      quiz_1       quiz_2       quiz_3      midterm       test_1       test_2   final_exam 
+0.0017523498 0.0007565712 0.0064761939 0.1897859505 0.1719335054 0.1756828784 0.2905830227 
+> my_grades = c(0.917, 0.933, 1.00, 0.941, 0.974, 0.873, 0.984, 0.94, 0.699, 1.00, 1.00, 0.786, 0.875, 0.667, 0.82, 0.708)
+> pf(lin_model, my_grades) 
+[1] 0.8134929 
+```
+If those were the student's grades, then he/she gets an 81 in the course as the final grade, which is around an A. <br><br>
+
+## Final Remarks
+I hope that you enjoyed going through and reading over my tutorials. And I do hope you learned something today on your read. I am still planning on the Machine Learning/Data Science series tutorials/articles. I plan on releasing at least 1 or 2 on a monthly basis, due to my heavy and busy schedule. My next one (still unplanned) but it should be released sometime in March. Stay tuned! <br><br>
+
+On other note, check out some of my other links:
+<ul>
+  <li>My Website - http://galix.me</li>
+  <li>Tech Blogz: Tips, Tricks and Tutorials on anything Tech-y - http://galix.me/tech-blogz/tech.html </li>
+  <li>Living the G Life: I Now Have A Personal Blog, new updates every 2 weeks or so - http://galix.me/pb/pb.html</li>
+  <li>My CV by the way (just flexin'): http://galix.me/CV_Updated_January2020.pdf</li>
+</ul>
