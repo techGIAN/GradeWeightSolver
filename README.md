@@ -102,7 +102,7 @@ This means that we plot an xy-plot of the `midterm` vs the `final_grade`. Notice
 So consider using a different predictor instead of `midterm`, say `final_exam`. Then your R code should look like this:
 
 ```r
-> plot(final_grade~final_grade,data=df)
+> plot(final_grade~final_exam,data=df)
 ```
 in order to produce this plot:
 
@@ -118,3 +118,35 @@ Before we begin with the modelling, I'd like to show you another neat thing. Typ
 > summary(df)
 ```
 
+### Functions to Use in Our Modelling
+When we do the modelling later on, we might need a couple of the functions.
+
+```r
+> pf <- function(model, term_grades) {
++     y <- model$coefficients[1]
++     for (i in 1:16) {
++         y <- y+model$coefficients[i+1]*term_grades[i]
++     }
++     return(y)
++ }
+```
+If you are not too familiar with functions, basically functions are simply a blocks of code that sequentially gives you some tasks. So for instance, in the above R code, `pf` is the name of the variable that is of type `function`. And this particular function we have here takes in two parameters, the `model` and the `term_grades`. These could be arbitrary names, but it is more helpful for the person reading your code if the variable names could give insight on what they actually represent. So in our case, `model` basically descirbes what kind of model to be used and `term_grades` is going to be a vector which represents the grades of some student. While we need not specify the type of these variables, other programming languages such as Java and C do. Within the method's (interchangeable terms with functiton) body, we set `y` to be equal to `model$coefficients[1]` (you will see later the context and how this plays out but accept it for now). The next three lines is a `for` loop, which is a popular control structure in programming languages that allow iterations. Here, we interpret it as i = 1, 2, 3, ..., 16, where the `i` in each iteration gets replaced within the `for` block. But basically this is just telling us that we multiply the coefficients of our model with the term grades of the students and add them all up. As a made-up example, if the model's coefficients are (6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 10) and the student's grades are (100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85), then the model should output whatever is the value of 6 * 100 + 6 * 99 + ... + 6 * 86 + 10 * 85. Click <a href="https://www.tutorialspoint.com/computer_programming/computer_programming_functions.htm" target="_blank">here</a> to learn more about functions. This is in C though, but at least it teaches you the ropes on simple functions. If you wish to learn more about R syntaxes on functions, then you can click <a href="https://www.tutorialspoint.com/r/r_functions.htm" target="_blank">here</a>.
+
+```r
+> sqe <- function(actual, pred) {
++     squared_error <- (actual-pred)^2
++     return (squared_error)
++ }
+```
+By looking at this code, would you be able to guess what the function does and what it outputs? <br><br>
+
+These two functions will be essential in our later work. Type them for now in the RStudio console.
+
+### Dataset Partitioning
+In supervised learning, such as in regression, it is important to split the dataset into what you call the <b>training set</b> and the <b>testing set</b>. The training set is used by the program to build a model, given the predictor(s) and the response. The more that you have in your training set, the better the model can be. The testing set is used by the program to make predictions as to what the response output would be and compare it with actual response, for each observation in the test set. Of course, the more matches there are the higher accuracy of the model is. And  the more incorrect predictions just leads to a higher error rate. There are times where we also have a <b>validation set</b>, but we will keep it simple for now and do it another time. The ratio of the number of training data vs testing data is not really set at stone. Let us use 9:1 ratio. Hence 90% of the data is for training and the remaining 10% for testing. We can either just choose the first 90% of the data to be our training data and the remaining as the testing data, but that can cause a lot of bias. Instead, we apply random sampling.
+
+```r
+> set.seed(1)
+> rnd_sample <- sample(1:dim(df)[1],dim(df)[1]/10)
+```
+We can input any value for the seed. This just means that if we perform the same analysis again using the same seed, we will get the sample back. Using another value for the seed gives a different set of random sample. The second line 
