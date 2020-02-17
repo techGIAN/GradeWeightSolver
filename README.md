@@ -24,6 +24,8 @@ For the predictors, there are 9 labs, 2 tests, 1 midterm, 3 quizzes and 1 final 
 <b>Where to Find the Dataset: </b> It is in this GitHub Repo, please download <b>grades.xlsx</b>
 
 ## Tutorial in Linear Regression
+<i><b>Note</b> that the R script can also be found in this GitHub repo.</i>
+
 ### Getting started
 <p align="center">
   <img src="img/start.png" width=50% margin-left=auto margin-right=auto />
