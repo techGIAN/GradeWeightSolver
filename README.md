@@ -86,4 +86,35 @@ Some professors are keen at curving final grades especially when it does not mee
 ```
 The first two lines here determines how many students have passed the course. Great, 499, which is around 80% of the course. And around 20% have failed. Note that a pass at our university means a final grade of 50% or above. Looking at the mean and median, we get around 65% and 67% which is somehow close to the average range mentioned earlier, little higher but still looks fine. Two interpretations: either this is the original actual average, OR this is the curved grade (could be up or down). But we will see in our analysis that if there is no error, then it's the former case. Else, it's the latter. No error in this context means a "a very significantly little to no" error. <br><br>
 
-Now, let us turn our attention into the current 2D plot of one of the predictors vs the response.
+Now, let us turn our attention into the current 2D plot of one of the predictors vs the response. Suppose I select `midterm`. How does that correlate with the `final_grade`? Well, let us look into the 2D plot.
+
+<p align="center">
+  <img src="img/mid.png" width=30% margin-left=auto margin-right=auto />
+</p>
+
+You can type the following R code in your console to display this plot.
+
+```r
+> plot(final_grade~midterm,data=df)
+```
+This means that we plot an xy-plot of the `midterm` vs the `final_grade`. Notice the tilde? To its left is the response and the predictor(s) to its right. The data is set to `df`. <br><br>
+
+So consider using a different predictor instead of `midterm`, say `final_exam`. Then your R code should look like this:
+
+```r
+> plot(final_grade~final_grade,data=df)
+```
+in order to produce this plot:
+
+<p align="center">
+  <img src="img/fin.png" width=30% margin-left=auto margin-right=auto />
+</p>
+
+In both cases, we notice the linear pattern the points are following. This suggests that a linear model is a possible candidate of the type of model to use for this particular problem. We will be applying linear regression to find the line of best fit. That is to say, find a line that will best fit all the point in a single straight line, with the least minimal amount of errors possible. We will see that upon finding the line we can add up the squares of the distances between the points and the best-fitting line (called <b>residuals</b>) and the reason it is squared is because we want positive values since we are talking of distances. This is called the <b>Sum of Squared Residuals</b> or SSE. <br><br>
+
+Before we begin with the modelling, I'd like to show you another neat thing. Type this simple line of code in your RStudio console. What do you get as the result?
+
+```r
+> summary(df)
+```
+
